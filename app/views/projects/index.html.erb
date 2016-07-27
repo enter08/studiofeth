@@ -1,0 +1,57 @@
+<div id="container">
+<script type="text/javascript" src="js/script.js"></script>
+<%= render 'layouts/header' %>
+
+<% if current_user && current_user.admin? %>
+
+<p id="notice"><%= notice %></p>
+
+<h2 align="center">All projects in the database</h2><br/>
+
+<div class="table-responsive">
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Location</th>
+      <th>Portfolio page</th>
+      <th>Cover image</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= project.id %></td>
+        <td><%= project.name %></td>
+        <td><%= project.description %></td>
+        <td><%= project.location %></td>
+        <td><%= project.project_type %></td>
+        <td>
+        <% if project.images.first %>
+          <%= image_tag("#{project.images.first.mini_thumb.url}") %>
+        <% end %>
+        </td>
+        <td><%= link_to 'Show', project %></td>
+        <td><%= link_to 'Edit', edit_project_path(project) %></td>
+        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<br>
+
+<%= link_to 'New Project', new_project_path %>
+<br><br>
+<% else %>
+<p> Only for admin users. </p>
+<% end %>
+
+<%= render 'layouts/footer' %>

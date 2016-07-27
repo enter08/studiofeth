@@ -921,7 +921,7 @@ ul.social-list li:last-child a i {
 	font-size: 76px;
 	font-weight: 100;
 	text-transform: uppercase;
-    color: #555;
+    color: #fff;
 }
 
 #main-slide .slider-content h2.white, #main-slide .slider-content h3.white {
@@ -934,7 +934,7 @@ ul.social-list li:last-child a i {
 	margin-top: 60px;
 	text-transform: uppercase;
     text-align: center;
-    color: #555;
+    color: #fff;
 }
 
 .slider.btn{

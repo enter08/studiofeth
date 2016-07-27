@@ -1,0 +1,39 @@
+<%= form_for @project, :html => {class: "contact-form", id: "contact-form", role: "form"} do |f| %>
+
+  <%= f.select(:project_type, options_for_select(["wooden_house","projecting"]), {}, {class: "btn btn-default dropdown-toggle"}) %>
+
+<div class="form-group">
+    <div class="controls">
+      <%= f.text_field :name, :placeholder => "Name" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="controls">
+      <%= f.text_area :description, :rows => 7, :placeholder => "Description" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="controls">
+      <%= f.text_field :location, :placeholder => "Location" %>
+    </div>
+  </div>
+
+  <%= f.file_field :images, {multiple: true, class: "btn"} %>
+
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% @project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div id="success" style="color:#34495e;"> 
+    <%= f.submit %>
+  </div>
+<% end %>
